@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+// Function to remove elements equal to the key and return the count of other elements
+int removeKey(int arr[], int n, int key) {
+    int count = 0; // Count of elements not equal to the key
+
+    // Iterate through the array
+    for (int i = 0; i < n; i++) {
+        // If the current element is not equal to the key, keep it in the array
+        if (arr[i] != key) {
+            arr[count] = arr[i];
+            count++;
+        }
+    }
+    return count; // Return the count of elements not equal to the key
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 3, 5, 3};
+    int n = sizeof(arr) / sizeof(arr[0]); // Calculate the size of the array
+    int key = 3; // Key to be removed
+
+    // Call the function to remove the key
+    int newLength = removeKey(arr, n, key);
+
+    // Print the result
+    printf("Array after removing key %d:\n", key);
+    for (int i = 0; i < newLength; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\nNumber of values not equal to key: %d\n", newLength);
+
+    return 0;
+}
